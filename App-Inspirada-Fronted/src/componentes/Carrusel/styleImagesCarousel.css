@@ -1,0 +1,32 @@
+.carousel {
+  position: relative;
+  max-width: 1300px;
+  height: 700px;
+  margin: 30px auto;
+}
+  
+.image {
+  max-width: 1300px;
+  height: 700px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.caption p {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+}
+
+.caption h3 {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+}
+
+/* Clase del mismo Bootstrap */
+.carousel-caption {
+  right: 0% !important; 
+  left: 0% !important;
+  bottom: 0rem !important;
+}

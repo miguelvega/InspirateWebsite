@@ -1,0 +1,22 @@
+.flex-container-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.flex-container-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.card-title.h5 {
+    font-size: 40px;
+}
+
+.card-subtitle.h6 {
+    font-size: 30px;
+}
+.card-text {
+    font-size: 20px;
+}

@@ -1,0 +1,31 @@
+
+.typesOvpgs-container{
+    display: flex;
+    font-size: 20px;
+    margin-left: 90px;
+}
+.typesOvpgs-container > * {
+    margin-right: -400px;
+  }
+.typesOvpgs-container > *:last-child {
+    margin-right: 0;
+}
+
+.facus{
+  font-size: 18px;
+  margin-left: 100px;
+}
+.carreras{
+  width: 10px;
+  margin-left: 50px;
+  font-size: 20px;
+}
+
+.container-bottom{
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-right{
+  margin-left: 90px;
+}

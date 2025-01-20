@@ -1,0 +1,10 @@
+.logo{
+  width: 200px;
+  height: auto;
+  margin-left: -100px;
+}
+  
+.nav-link:hover {
+    color: rgb(214, 119, 214);
+  
+}

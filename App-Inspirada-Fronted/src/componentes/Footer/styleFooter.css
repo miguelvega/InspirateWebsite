@@ -1,0 +1,43 @@
+.footer {
+    width: 100%;
+    position: relative;
+    margin-top: auto;
+    text-align: center;
+    background-color: rgb(42, 80, 157);
+}
+  
+.footer-columns {
+    display: flex;
+}
+  
+.footer-column {
+    flex: 1;
+    background-color: rgb(42, 80, 157);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-wsp{
+    margin-left: -50px;
+}
+.wsp-logo {
+    width: 24px;
+    height: 24px;
+    margin-top: -13px;
+}
+.number{
+    width: 300px;
+    margin-left: -83px;
+}
+.footer h3{
+    margin-top: 20px;
+    font-size: 20px;
+    color:whitesmoke;
+}
+
+
+.footer p{
+    color:azure;
+}
