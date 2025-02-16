@@ -123,7 +123,7 @@ export const Welcome = () => {
       <div className='flex-container-right'>
           <Card className="mb-4" border ="light" bg="light" style={{ width: '40rem' }}>
           <Card.Body>
-            <CardImg variant="top" src="https://i.pinimg.com/1200x/65/48/24/6548242588494415f825074af04bf764.jpg"></CardImg>
+            <CardImg variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVsvwe1NThCm_LKYGsAt_Cb-WL_fUrUrZ2Mg&s"></CardImg>
             <Card.Footer>Nuestra mascota Cai</Card.Footer>
           </Card.Body>
         </Card>
