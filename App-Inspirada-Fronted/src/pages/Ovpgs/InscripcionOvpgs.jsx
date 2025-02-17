@@ -1,124 +1,149 @@
-import React, { useState, useEffect} from 'react'
-import listaFacultades from './Listas/ListaFacultades'
-import CheckBoxIuni from '../../Personalizados/CheckBoxIuni'
-import images from './ImgEmbajadores/Data';
-import { ImagesCarousel } from '../../componentes/Carrusel/ImagesCarousel'
-import { Carousel } from 'react-bootstrap';
-import './styleOvpgs.css'
-import { NavItem } from 'react-bootstrap'
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-
+import React, { useState, useEffect } from "react";
+import listaFacultades from "./Listas/ListaFacultades";
+import CheckBoxIuni from "../../Personalizados/CheckBoxIuni";
+import { calendario } from "./ImgEmbajadores/Data"; // Importa el calendario desde Data.jsx
+import "./styleOvpgs.css";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export const InscripcionOvpgs = () => {
-
   const TabContent = styled(motion.div)`
-  width: 100%;
+    width: 100%;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   `;
 
-
-  let OvpgUser=''
-  let carrera=''
-  let embajador=''
-  let typesOvpg = ['Grupal', 'Individual']
+  let typesOvpg = ["Grupal", "Individual"];
   let CheckTypeOvpg = [false, false];
 
-  let [arrayFacultades, setArrayFacultades] = useState(listaFacultades)
+  let [arrayFacultades, setArrayFacultades] = useState(listaFacultades);
+  let [isTypeOpvg, setTypeOvpg] = useState(typesOvpg);
+  let [isCheckTypeOvpg, setCheckTypeOvpg] = useState(CheckTypeOvpg);
+  let [isOvpgUser, setOvpgUser] = useState("");
+  let [isFAcu, setFacu] = useState("");
+  let [selectedDia, setSelectedDia] = useState(null);
+  let [selectedHorario, setSelectedHorario] = useState(null);
 
-  //Hooks
-  //hook del array de los tipos de OVPG
-  let [isTypeOpvg, setTypeOvpg] = useState(typesOvpg) 
-  //hook para el array de checking de los tipos de Ovpg
-  let [isCheckTypeOvpg, setCheckTypeOvpg] = useState(CheckTypeOvpg)
-  //hook para los usarios de Ovpgs
-  let [isOvpgUser, setOvpgUser] = useState(OvpgUser)
-  //
-  let [isFAcu, setFacu] = useState("")
-
-  const handleFacultades = (event,{index}) => {
-    const updateArreglo = [...arrayFacultades]
-    if(event.target.checked){
-      updateArreglo[index].checked=true
-      for(let i=0; i<updateArreglo.length; i++){
-        if(i!==index) updateArreglo[i].checked=false;
+  const handleFacultades = (event, { index }) => {
+    const updateArreglo = [...arrayFacultades];
+    if (event.target.checked) {
+      updateArreglo[index].checked = true;
+      for (let i = 0; i < updateArreglo.length; i++) {
+        if (i !== index) updateArreglo[i].checked = false;
       }
-    }else{
-      updateArreglo[index].checked=false;
+    } else {
+      updateArreglo[index].checked = false;
     }
-    setArrayFacultades(updateArreglo)
-    setFacu(updateArreglo[index].nombre)
-  }
+    setArrayFacultades(updateArreglo);
+    setFacu(updateArreglo[index].nombre);
+  };
 
-  const handleTypesOvpgs = (event,{index}) =>{
-    const updateArreglo = [...isCheckTypeOvpg]
-    if(event.target.checked){
-      setOvpgUser(isTypeOpvg[index])
-      updateArreglo[index]=true
-      for(let i=0; i<updateArreglo.length; i++){
-        if(i!==index) updateArreglo[i]=false;
+  const handleTypesOvpgs = (event, { index }) => {
+    const updateArreglo = [...isCheckTypeOvpg];
+    if (event.target.checked) {
+      setOvpgUser(isTypeOpvg[index]);
+      updateArreglo[index] = true;
+      for (let i = 0; i < updateArreglo.length; i++) {
+        if (i !== index) updateArreglo[i] = false;
       }
-    }else{
-      updateArreglo[index]=false;
+    } else {
+      updateArreglo[index] = false;
     }
-    
-    setCheckTypeOvpg(updateArreglo)
-  }
+    setCheckTypeOvpg(updateArreglo);
+  };
 
-  useEffect(() => {
-   
-  }, [isOvpgUser]);
+  const handleSeleccionarDia = (dia) => {
+    setSelectedDia(selectedDia === dia ? null : dia);
+  };
+
+  const handleSeleccionarHorario = (horario) => {
+    setSelectedHorario(selectedHorario === horario ? null : horario);
+  };
+
+  useEffect(() => {}, [isOvpgUser]);
 
   return (
     <TabContent
-    initial={{ opacity: '0%' }}
-    animate={{ opacity: '100%'}}
-    transition={{ duration: '1.0' }}>
-      <div className='typesOvpgs-container'>
-        {isTypeOpvg.map((tipoOvpg,index) => (
-          <CheckBoxIuni 
-            key={index} 
-            label={tipoOvpg} 
-            checked={isCheckTypeOvpg[index]} 
-            onChange={(event) => {handleTypesOvpgs(event,{index})} }
-          
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.0 }}
+    >
+      <h2 className="header-title">Inscripción a OVPGs</h2>
+
+      <div className="typesOvpgs-container">
+        {isTypeOpvg.map((tipoOvpg, index) => (
+          <CheckBoxIuni
+            key={index}
+            label={tipoOvpg}
+            checked={isCheckTypeOvpg[index]}
+            onChange={(event) => {
+              handleTypesOvpgs(event, { index });
+            }}
           />
         ))}
       </div>
 
-      <div className='container-bottom'>
-          <div>
-            {arrayFacultades.map((facus, index) =>(
-              <div key={index} className='facus'>
-                <CheckBoxIuni 
-                  label={facus.nombre} 
-                  checked={facus.checked} 
-                  onChange={(event) => {handleFacultades(event,{index})} }
-                />
-                {facus.checked && 
-                  facus.carreras.lista.map(
-                    (carrera,indexSon) =>(
-                      <div key={indexSon} className='carreras'>
-                        <CheckBoxIuni 
-                          label={carrera}
-                        />
-                      </div>
-                    )
-                  )
-                }
-              </div>
-            )
-            )}
-          </div>
-          <div className='container-right'>
-            <h1>Embajadores de la {isFAcu}</h1>
-            <ImagesCarousel images={images} />
-          </div>
+      <div className="container-bottom">
+        <div className="facultades-container">
+          {arrayFacultades.map((facus, index) => (
+            <div key={index} className="facus">
+              <CheckBoxIuni
+                label={facus.nombre}
+                checked={facus.checked}
+                onChange={(event) => {
+                  handleFacultades(event, { index });
+                }}
+              />
+              {facus.checked &&
+                facus.carreras.lista.map((carrera, indexSon) => (
+                  <div key={indexSon} className="carreras">
+                    <CheckBoxIuni label={carrera} />
+                  </div>
+                ))}
+            </div>
+          ))}
+        </div>
 
+        <div className="horarios-container">
+          <div className="dias-container">
+            {calendario.dias.map((dia, index) => (
+              <div key={index} className="dia-container">
+                <div
+                  className={`dia ${selectedDia === dia ? "selected" : ""}`}
+                  onClick={() => handleSeleccionarDia(dia)}
+                >
+                  <h3>{dia.nombre}</h3>
+                </div>
+                {selectedDia === dia && (
+                  <div className="horarios-dia-container">
+                    <ul>
+                      {dia.horarios.map((horario, idx) => (
+                        <li
+                          key={idx}
+                          className={`horario ${
+                            selectedHorario === horario
+                              ? "selected-horario"
+                              : ""
+                          }`}
+                          onClick={() => handleSeleccionarHorario(horario)}
+                        >
+                          {horario}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-      
     </TabContent>
-  )
-}
+  );
+};
 
 /*
 import { NavBarSuperior} from '../../componentes/Menus/NavBarSuperior'
