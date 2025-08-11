@@ -1,0 +1,51 @@
+/* Estilo general del navbar */
+.header-navbar {
+  background-color: #f8f9fa; /* Un fondo claro, elegante */
+  padding: 15px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Contenedor del logo */
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Logo Inspirate */
+.logo {
+  height: 60px;
+  display: block;
+}
+
+/* Botones */
+.custom-btn {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón Iniciar Sesión */
+.custom-btn:first-child {
+  border: 2px solid #343a40;
+  color: #343a40;
+}
+
+/* Botón Únete (Naranja llamativo) */
+.custom-btn:last-child {
+  background-color: #ff9f1c;
+  border: none;
+  color: white;
+}
+
+.custom-btn:last-child:hover {
+  background-color: #e68a00;
+}

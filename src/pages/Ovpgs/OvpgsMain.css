@@ -1,0 +1,32 @@
+.container-presentacion-ovpgs {
+    margin-top: 50px;
+    display: grid;
+    place-items: center;
+    text-align: center; /* Asegura que el texto esté centrado */
+  }
+  
+  .container-presentacion-ovpgs h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .container-presentacion-ovpgs p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px; /* Limitar el ancho del texto para mejor lectura */
+  }
+  
+  .button-activity {
+    transition: transform 0.3s ease;
+  }
+  
+  .button-activity:hover {
+    transform: scale(1.05); /* Efecto de escala para darle un toque interactivo */
+  }
+  
+  .button-activity:active {
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra al presionar */
+  }
+  

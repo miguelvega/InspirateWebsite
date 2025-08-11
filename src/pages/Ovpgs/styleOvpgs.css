@@ -1,0 +1,187 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fb; /* Fondo suave */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Para evitar el desplazamiento horizontal */
+}
+
+/* Título principal */
+.header-title {
+  text-align: center;
+  font-size: 28px;
+  color: #007bff;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenedor principal */
+.TabContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+}
+
+/* Contenedor de los tipos de OVPG */
+.typesOvpgs-container {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.typesOvpgs-container > * {
+  margin-right: 20px;
+}
+
+.typesOvpgs-container > *:last-child {
+  margin-right: 0;
+}
+
+/* Contenedor de facultades */
+.facultades-container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+}
+
+.facus {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.carreras {
+  margin-left: 30px;
+  font-size: 18px;
+}
+
+/* Contenedor de horarios */
+.horarios-container {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 30px;
+}
+
+/* Contenedor de los días */
+.dias-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  width: 100%;
+}
+
+.dia-container {
+  flex: 1 1 120px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.dia {
+  border: 2px solid #007bff;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f7faff;
+  width: 130px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dia:hover {
+  background-color: #e7f3ff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.dia.selected {
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* Contenedor de horarios para un día */
+.horarios-dia-container {
+  margin-top: 15px;
+  padding-left: 10px;
+}
+
+.horarios-dia-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.horarios-dia-container ul li {
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.horarios-dia-container ul li:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.horarios-dia-container ul li.selected-horario {
+  background-color: #28a745;
+  color: white;
+  border: 1px solid #218838;
+}
+
+/* Añadir espacio entre el contenedor de facultades y horarios */
+.container-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  width: 100%;
+}
+
+/* Navbar personalizado */
+.navbar {
+  background-color: #fff; /* Fondo blanco */
+  border-bottom: 1px solid #ccc; /* Borde inferior sutil */
+  padding: 15px 20px; /* Espaciado adecuado */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Contenedor de logo y enlaces */
+.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar .nav-links a:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
