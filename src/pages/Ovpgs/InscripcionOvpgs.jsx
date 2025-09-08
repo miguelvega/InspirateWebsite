@@ -18,7 +18,7 @@ export const InscripcionOvpgs = () => {
     padding: 40px;
     background-color: #fff;
     border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 18px rgba(30, 27, 27, 0.1);
   `;
 
   let typesOvpg = ["Grupal", "Individual"];
@@ -41,14 +41,19 @@ export const InscripcionOvpgs = () => {
   const handleFacultades = (event, { index }) => {
     const updateArreglo = [...arrayFacultades];
     if (event.target.checked) {
+      // Marco la facultad clicada
       updateArreglo[index].checked = true;
+      // y DESMARCO todas las demás
       for (let i = 0; i < updateArreglo.length; i++) {
         if (i !== index) updateArreglo[i].checked = false;
       }
     } else {
+      // Si desmarcan la misma, queda sin seleccionar
       updateArreglo[index].checked = false;
     }
+    // Actualizo el estado con la nueva lista
     setArrayFacultades(updateArreglo);
+    // Guardo el nombre de la facultad marcada en dos estados
     setFacu(updateArreglo[index].nombre);
     setFacultadSelected(updateArreglo[index].nombre);
   };
@@ -75,10 +80,12 @@ export const InscripcionOvpgs = () => {
         }
       }
       auxFacultades[auxIndex].carreras.lista[indexSon].checked = true;
+      // Guardo el nombre de la carrera seleccionada
       setCarreraSelected(
         auxFacultades[auxIndex].carreras.lista[indexSon].nombre
       );
     } else {
+      // Si desmarcan esa carrera, queda sin selección
       auxFacultades[index].carreras.lista[indexSon].checked = false;
       setCarreraSelected(null);
     }
@@ -90,6 +97,7 @@ export const InscripcionOvpgs = () => {
     setHorarios([]);
   };
 
+  // Maneja la selección del tipo de OVPGS (Grupal / Individual)
   const handleTypesOvpgs = (event, { index }) => {
     const updateArreglo = [...isCheckTypeOvpg];
     if (event.target.checked) {
@@ -135,11 +143,11 @@ export const InscripcionOvpgs = () => {
       carrera: "Química",
       disponibilidades: [
         {
-          dia: "12/8/2025",
+          dia: "27/8/2025",
           horario: [{ rango: "9:00 - 10:00", voluntario: ["Diego"] }],
         },
         {
-          dia: "15/8/2025",
+          dia: "29/8/2025",
           horario: [{ rango: "11:00 - 12:00", voluntario: ["Diego"] }],
         },
       ],
@@ -289,39 +297,6 @@ export const InscripcionOvpgs = () => {
             </div>
           )}
         </div>
-        {/* <div className="horarios-container">
-          <div className="dias-container">
-            {calendario.dias.map((dia, index) => (
-              <div key={index} className="dia-container">
-                <div
-                  className={`dia ${selectedDia === dia ? "selected" : ""}`}
-                  onClick={() => handleSeleccionarDia(dia)}
-                >
-                  <h3>{dia.nombre}</h3>
-                </div>
-                {selectedDia === dia && (
-                  <div className="horarios-dia-container">
-                    <ul>
-                      {dia.horarios.map((horario, idx) => (
-                        <li
-                          key={idx}
-                          className={`horario ${
-                            selectedHorario === horario
-                              ? "selected-horario"
-                              : ""
-                          }`}
-                          onClick={() => handleSeleccionarHorario(horario)}
-                        >
-                          {horario}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
       <InscriptionModal
         show={showModal}
@@ -339,54 +314,3 @@ export const InscripcionOvpgs = () => {
     </TabContent>
   );
 };
-
-/*
-import { NavBarSuperior} from '../../componentes/Menus/NavBarSuperior'
-import listaCarreras from './ListaCarreras'
-import './styleCheckBox.css'
-const Items = ({nombre, lista, checked, onChange}) =>{
-  return (
-    <div className='Item-Personalitation'>
-      <CheckboxPersonalitation label={nombre} lista={lista} checked={checked} onChange={onChange}/>
-    </div>
-  )
-}
-
-
-export const Ovpgs = () => {
-  const [arreglo, setArreglo] = useState(listaCarreras)
-
-  const handleCheckboxChange = (event,{index}) =>{
-    console.log(event.target.checked)
-    const updateArreglo = [...arreglo]
-
-    if(event.target.checked===true){
-      updateArreglo[index].checked=true
-      for(let i=0; i<updateArreglo.length; i++){
-        if(i!=index) updateArreglo[i].checked=false;
-      }
-    }else{
-      updateArreglo[index].checked=false;
-    }
-    setArreglo(updateArreglo)
-  }
-
-  return (
-    <>
-        <h1>Carreras</h1>
-        {arreglo.map((items, index) => (
-        <React.Fragment key={items.id}>
-          <Items
-            nombre={items.nombre}
-            lista = {items.carreras}
-            checked={items.checked}
-            onChange={(event) => {
-              handleCheckboxChange(event, { index })
-            }}
-          />
-        </React.Fragment>
-      ))}
-    </>
-  )
-}
-*/

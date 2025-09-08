@@ -42,7 +42,12 @@ export const NavBarSuperior = () => {
         </Nav.Item>
 
         <Nav.Item>
-          <Nav.Link eventKey="openday" disabled className="text-dark">
+          <Nav.Link
+            as={Link}
+            eventKey="openday"
+            to={"/home/openday"}
+            className="text-dark"
+          >
             Open Day
           </Nav.Link>
         </Nav.Item>
