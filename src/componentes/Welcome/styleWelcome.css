@@ -1,22 +1,532 @@
+/* styleWelcome.css - CSS para Welcome.jsx con estructura correcta */
+
+/* Variables CSS */
+:root {
+  --primary-color: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary-color: #4f46e5;
+  --success-color: #10b981;
+  --info-color: #06b6d4;
+  --warning-color: #f59e0b;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-300: #d1d5db;
+  --gray-600: #6b7280;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --border-radius: 15px;
+}
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Contenedor principal de la página welcome */
+.welcome-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+  padding-top: 0;
+}
+
+/* === ESTILOS PARA EL CARRUSEL === */
+.carousel {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0;
+}
+
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: relative;
+  display: none;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-item.active {
+  display: block;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 15%;
+  bottom: 1.25rem;
+  left: 15%;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: var(--white);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+
+.carousel-caption h3 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption p {
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Controles del carousel */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: var(--white);
+  text-align: center;
+  background: none;
+  border: 0;
+  opacity: 0.5;
+  transition: opacity 0.15s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: var(--white);
+  text-decoration: none;
+  outline: 0;
+  opacity: 0.9;
+}
+
+.carousel-control-prev {
+  left: 0;
+}
+
+.carousel-control-next {
+  right: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
+}
+
+/* Indicadores del carousel */
+.carousel-indicators {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-right: 15%;
+  margin-bottom: 1rem;
+  margin-left: 15%;
+  list-style: none;
+}
+
+.carousel-indicators [data-bs-target] {
+  box-sizing: content-box;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 3px;
+  padding: 0;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: var(--white);
+  background-clip: padding-box;
+  border: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: 0.5;
+  transition: opacity 0.6s ease;
+}
+
+.carousel-indicators .active {
+  opacity: 1;
+}
+
+/* === ESTILOS PARA LA SECCIÓN DE BIENVENIDA === */
+.hero-welcome-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+}
+
+.hero-welcome-card {
+  border: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  background: var(--white);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-welcome-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* === ESTRUCTURA ORIGINAL DE FLEX CONTAINERS === */
 .flex-container-left {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 200px;
+  padding: 2rem 0;
+  width: 100%;
 }
 
 .flex-container-right {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 200px;
+  padding: 2rem 0;
+  width: 100%;
 }
 
-.card-title.h5 {
-    font-size: 40px;
+/* === ESTILOS BASE PARA CARDS DE BOOTSTRAP === */
+.card {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  background: var(--white);
 }
 
-.card-subtitle.h6 {
-    font-size: 30px;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
 }
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.card-subtitle {
+  font-weight: 500;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
 .card-text {
-    font-size: 20px;
+  line-height: 1.6;
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+}
+
+/* Estilos para Cards con bordes de colores específicos */
+.card[style*="border: primary"] {
+  border-left: 4px solid var(--primary-color) !important;
+}
+
+.card[style*="border: success"] {
+  border-left: 4px solid var(--success-color) !important;
+}
+
+.card[style*="border: info"] {
+  border-left: 4px solid var(--info-color) !important;
+}
+
+.card[style*="border: warning"] {
+  border-left: 4px solid var(--warning-color) !important;
+}
+
+.card[style*="border: dark"] {
+  border-left: 4px solid var(--gray-800) !important;
+}
+
+.card[style*="border: light"] {
+  border-left: 4px solid var(--gray-300) !important;
+}
+
+/* === COLORES DE TEXTO BOOTSTRAP === */
+.text-primary {
+  color: var(--primary-color) !important;
+}
+
+.text-success {
+  color: var(--success-color) !important;
+}
+
+.text-info {
+  color: var(--info-color) !important;
+}
+
+.text-warning {
+  color: var(--warning-color) !important;
+}
+
+.text-dark {
+  color: var(--gray-800) !important;
+}
+
+.text-muted {
+  color: var(--gray-600) !important;
+}
+
+.text-white {
+  color: var(--white) !important;
+}
+
+/* Background colors */
+.bg-light {
+  background-color: var(--gray-50) !important;
+}
+
+/* === DISPLAY CLASSES PARA TÍTULOS === */
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.display-5 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Lead text */
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* === BOOTSTRAP SPACING CLASSES === */
+.mb-3 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.my-5 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+.p-4 {
+  padding: 1.5rem !important;
+}
+
+.p-5 {
+  padding: 3rem !important;
+}
+
+/* Text alignment */
+.text-center {
+  text-align: center !important;
+}
+
+/* === BOOTSTRAP GRID SYSTEM === */
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1140px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 1 0 0%;
+}
+
+.col-md-5 {
+  flex: 0 0 41.666667%;
+  max-width: 41.666667%;
+}
+
+.col-md-7 {
+  flex: 0 0 58.333333%;
+  max-width: 58.333333%;
+}
+
+.col-lg-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+
+.col-xl-8 {
+  flex: 0 0 66.666667%;
+  max-width: 66.666667%;
+}
+
+/* Bootstrap utilities */
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.g-0 {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+.g-0 > .col,
+.g-0 > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* === ESTILOS PARA IMÁGENES === */
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+/* === UTILITY CLASSES === */
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+.h3 {
+  font-size: 1.75rem;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .flex-container-left,
+  .flex-container-right {
+    justify-content: center;
+    padding: 1rem 0;
+  }
+  
+  .card[style*="40rem"] {
+    width: 100% !important;
+    max-width: 95% !important;
+    margin: 0 auto;
+  }
+  
+  .carousel {
+    margin: 0 -15px 0 -15px;
+    border-radius: 0;
+  }
+  
+  .carousel-caption {
+    right: 5%;
+    left: 5%;
+    padding: 1.5rem;
+  }
+  
+  .carousel-caption h3 {
+    font-size: 2rem;
+  }
+  
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+  
+  .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-welcome-section {
+    padding: 2rem 0;
+  }
+  
+  .col-md-5,
+  .col-md-7 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .col-lg-10,
+  .col-xl-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item img {
+    height: 300px;
+  }
+  
+  .carousel-caption {
+    right: 2%;
+    left: 2%;
+    padding: 1rem;
+  }
 }
